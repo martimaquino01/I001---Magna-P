@@ -52,11 +52,14 @@ export default function Hero({ onPick }) {
       </div>
 
       <div className="hero__inner shell">
+        <p className="hero__eyebrow">Investimento imobiliário · Algarve</p>
+
         <h1 className="hero__title">
-          <span className="ln"><span>Investimento imobiliário</span></span>
-          <span className="ln"><span>no <em>Algarve.</em></span></span>
+          <span className="ln"><span>Possui um imóvel</span></span>
+          <span className="ln"><span>ou quer investir?</span></span>
+          <span className="ln"><span><em>Fale connosco.</em></span></span>
         </h1>
-        <p className="hero__sub">Analisamos cada negócio com dados reais de transação.</p>
+
         <div className="hero__cta">
           <a className="btn btn--solid" href="#contacto" onClick={() => onPick('proprietario')}>
             <span>Tenho um imóvel</span><span className="arw">→</span>
@@ -67,6 +70,9 @@ export default function Hero({ onPick }) {
         </div>
       </div>
 
+      <a className="hero__cue" href="#fazemos" aria-label="Ver mais">
+        <span aria-hidden="true" />
+      </a>
       <div className="hero__line" aria-hidden="true" />
     </section>
   );

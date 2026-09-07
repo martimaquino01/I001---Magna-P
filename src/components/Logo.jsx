@@ -14,6 +14,11 @@ export default function Logo({ size = 26, className = '' }) {
   );
 }
 
-export function Wordmark() {
-  return <span className="brand__word">Magna<em>Properties</em></span>;
+/** "Magna Properties" em serif editorial — a segunda palavra em itálico. */
+export function Wordmark({ className = '' }) {
+  return (
+    <span className={['brand__word', className].filter(Boolean).join(' ')}>
+      Magna <em>Properties</em>
+    </span>
+  );
 }
