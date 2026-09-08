@@ -26,10 +26,6 @@
   --line-dark: rgba(242,236,222,.14);
   --line-light:rgba(27,15,12,.12);
 
-  --sunset: linear-gradient(90deg,
-      var(--teal) 0%, var(--maroon) 30%, var(--brick) 54%,
-      var(--amber) 80%, var(--butter) 100%);
-
   --shell: 1320px;
   --pad: clamp(20px, 4vw, 60px);
   --nav-h: 112px;
@@ -316,7 +312,18 @@ a:hover .fig img, .mcard:hover .fig img{ transform:scale(1.045); }
 .drawer{
   position:fixed; inset:0 auto 0 0; z-index:58;
   width:min(400px,84vw); overflow-y:auto; overscroll-behavior:contain;
-  background:var(--ink-2); color:var(--on-dark);
+  color:var(--on-dark);
+  /* textura de lã em vez de cor chapada; o véu por cima é leve, só o
+     suficiente para o texto assentar sem apagar o padrão */
+  background-color:var(--ink-2);
+  background-image:
+    linear-gradient(180deg, rgba(20,7,8,.60) 0%, rgba(20,7,8,.44) 38%,
+                            rgba(20,7,8,.68) 100%),
+    url("../assets/texture-wool.jpg");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+  box-shadow:14px 0 46px -22px rgba(0,0,0,.85);
   display:grid; grid-template-rows:1fr auto; gap:28px;
   padding:calc(var(--nav-h) + 26px) clamp(24px,3.4vw,40px) clamp(26px,3vw,36px);
   transform:translateX(-100%); visibility:hidden;
@@ -326,11 +333,10 @@ a:hover .fig img, .mcard:hover .fig img{ transform:scale(1.045); }
   transform:none; visibility:visible;
   transition:transform .6s var(--e), visibility 0s;
 }
-/* fio de marca a fechar o painel */
+/* fio discreto a fechar o painel */
 .drawer::after{
-  content:""; position:absolute; inset:0 0 0 auto; width:2px;
-  background:linear-gradient(180deg, var(--teal) 0%, var(--maroon) 30%,
-             var(--brick) 54%, var(--amber) 80%, var(--butter) 100%);
+  content:""; position:absolute; inset:0 0 0 auto; width:1px;
+  background:var(--line-dark);
 }
 
 .drawer__nav{ display:flex; flex-direction:column; justify-content:center; }
@@ -419,12 +425,6 @@ a:hover .fig img, .mcard:hover .fig img{ transform:scale(1.045); }
 .ready .hero__cue{ opacity:1; }
 .hero__cue span{ position:absolute; inset:0; background:var(--amber); animation:cue 2.6s var(--e-io) infinite; }
 @keyframes cue{ 0%{ transform:translateY(-100%); } 60%,100%{ transform:translateY(100%); } }
-
-.hero__line{
-  position:absolute; inset:auto 0 0 0; height:2px; background:var(--sunset);
-  transform:scaleX(0); transform-origin:left; transition:transform 1.4s var(--e) .5s;
-}
-.ready .hero__line{ transform:scaleX(1); }
 
 /* ── abordagem ──────────────────────────────────────────────── */
 .approach{ background:var(--sand); padding-block:var(--section); }
@@ -659,7 +659,6 @@ a:hover .fig img, .mcard:hover .fig img{ transform:scale(1.045); }
 .foot__bar .foot__fine{ margin-right:auto; color:rgba(242,236,222,.36); }
 .foot__up{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--on-dark-d); transition:color .3s; }
 .foot__up:hover{ color:var(--amber); }
-.foot__sky{ height:3px; background:var(--sunset); }
 
 /* ── responsivo ─────────────────────────────────────────────── */
 @media (max-width:980px){
@@ -696,7 +695,6 @@ a:hover .fig img, .mcard:hover .fig img{ transform:scale(1.045); }
   .drawer__nav a{
     opacity:1 !important; transform:none !important;
   }
-  .hero__line{ transform:scaleX(1) !important; }
   .hero__video{ transform:none !important; }
   .hero__cue{ display:none; }
   .fig::after, .loop::after{ display:none; }

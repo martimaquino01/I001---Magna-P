@@ -33,7 +33,6 @@ export default function Footer() {
           <a className="foot__up" href="#topo">{ft.up}</a>
         </div>
       </div>
-      <div className="foot__sky" aria-hidden="true" />
     </footer>
   );
 }

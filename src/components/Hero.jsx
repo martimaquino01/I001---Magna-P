@@ -75,7 +75,6 @@ export default function Hero({ onPick }) {
       <a className="hero__cue" href="#fazemos" aria-label={t.hero.cue}>
         <span aria-hidden="true" />
       </a>
-      <div className="hero__line" aria-hidden="true" />
     </section>
   );
 }

@@ -10,6 +10,7 @@ src/
   main.jsx
   App.jsx
   styles/global.css         tokens, tipografia e todas as secções
+  assets/texture-wool.jpg   fundo do menu lateral (empacotado pelo Vite)
   hooks/useMotion.js        useReducedMotion · useInView · useRafScroll
   components/
     Motion.jsx              Reveal · Split · Stat
@@ -21,6 +22,7 @@ public/
   video/   hero-1080 · hero-720 · loop-costa · loop-litoral
 legacy-static/              versão anterior em HTML puro — pode apagar
 16638089_3840_2160_30fps.mp4  original 4K (19,9 MB), não é servido
+pexels-eva-bronzini-7599716.jpg  original 4000×6000 da textura, não é servido
 ```
 
 ## Media
