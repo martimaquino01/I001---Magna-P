@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useInView, useReducedMotion } from '../hooks/useMotion.js';
+import { useLang } from '../i18n.jsx';
 
 /** Bloco que aparece com um pequeno deslize quando entra no ecrã. */
 export function Reveal({ as: Tag = 'div', delay = 0, className = '', children, ...rest }) {
@@ -55,8 +56,9 @@ function parse(text) {
   return out;
 }
 
-/** Número que conta até ao valor quando fica visível. Formata em pt-PT. */
+/** Número que conta até ao valor quando fica visível. Vírgula em PT, ponto em EN. */
 export function Stat({ value, decimals = 0, prefix = '', suffix = '', duration = 1400 }) {
+  const { lang } = useLang();
   const reduced = useReducedMotion();
   const [ref, inView] = useInView({ threshold: 0.5 });
   const [n, setN] = useState(0);
@@ -77,6 +79,7 @@ export function Stat({ value, decimals = 0, prefix = '', suffix = '', duration =
     return () => cancelAnimationFrame(raf);
   }, [inView, value, duration, reduced]);
 
-  const shown = decimals ? n.toFixed(decimals).replace('.', ',') : String(Math.round(n));
+  const sep = lang === 'en' ? '.' : ',';
+  const shown = decimals ? n.toFixed(decimals).replace('.', sep) : String(Math.round(n));
   return <span ref={ref}>{prefix}{shown}{suffix}</span>;
 }

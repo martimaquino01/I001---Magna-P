@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRafScroll, useReducedMotion } from '../hooks/useMotion.js';
+import { useLang } from '../i18n.jsx';
 
 const BASE = import.meta.env.BASE_URL;
 
 export default function Hero({ onPick }) {
+  const { t } = useLang();
   const [ready, setReady] = useState(false);
   const videoRef = useRef(null);
   const reduced = useReducedMotion();
@@ -52,25 +54,25 @@ export default function Hero({ onPick }) {
       </div>
 
       <div className="hero__inner shell">
-        <p className="hero__eyebrow">Investimento imobiliário · Algarve</p>
+        <p className="hero__eyebrow">{t.hero.eyebrow}</p>
 
         <h1 className="hero__title">
-          <span className="ln"><span>Possui um imóvel</span></span>
-          <span className="ln"><span>ou quer investir?</span></span>
-          <span className="ln"><span><em>Fale connosco.</em></span></span>
+          <span className="ln"><span>{t.hero.titleLines[0]}</span></span>
+          <span className="ln"><span>{t.hero.titleLines[1]}</span></span>
+          <span className="ln"><span><em>{t.hero.titleLines[2]}</em></span></span>
         </h1>
 
         <div className="hero__cta">
           <a className="btn btn--solid" href="#contacto" onClick={() => onPick('proprietario')}>
-            <span>Tenho um imóvel</span><span className="arw">→</span>
+            <span>{t.hero.ctaOwner}</span><span className="arw">→</span>
           </a>
           <a className="btn btn--line" href="#contacto" onClick={() => onPick('investidor')}>
-            <span>Quero investir</span><span className="arw">→</span>
+            <span>{t.hero.ctaInvestor}</span><span className="arw">→</span>
           </a>
         </div>
       </div>
 
-      <a className="hero__cue" href="#fazemos" aria-label="Ver mais">
+      <a className="hero__cue" href="#fazemos" aria-label={t.hero.cue}>
         <span aria-hidden="true" />
       </a>
       <div className="hero__line" aria-hidden="true" />

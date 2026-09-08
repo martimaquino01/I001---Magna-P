@@ -1,16 +1,11 @@
 import { Reveal, Split } from './Motion.jsx';
 import { LoopVideo } from './Media.jsx';
-
-const STEPS = [
-  { t: 'Originação', d: 'Identificação do negócio junto de proprietários, rede local ou mercado aberto.' },
-  { t: 'Dados', d: 'Cruzamento de fontes oficiais para apurar o valor praticado na zona e no período.' },
-  { t: 'Verificação', d: 'Visita ao imóvel: estado de conservação, exposição, acessos e potencial de obra.' },
-  { t: 'Decisão', d: 'Proposta ou recusa fundamentada, sempre com os números apresentados.' },
-];
+import { useLang } from '../i18n.jsx';
 
 const SOURCES = ['INE', 'Confidencial Imobiliário', 'PORDATA', 'Censos'];
 
 export default function Method() {
+  const { t } = useLang();
   return (
     <section className="method on-dark" id="metodo">
       <div className="shell method__grid">
@@ -18,12 +13,12 @@ export default function Method() {
 
         <div>
           <div className="sechead">
-            <Reveal as="p" className="eyebrow">O método</Reveal>
-            <Split as="h2" className="h2">Como analisamos um *negócio.*</Split>
+            <Reveal as="p" className="eyebrow">{t.method.eyebrow}</Reveal>
+            <Split as="h2" className="h2">{t.method.h}</Split>
           </div>
 
           <div className="steps">
-            {STEPS.map((s, i) => (
+            {t.method.steps.map((s, i) => (
               <Reveal as="article" className="step" key={s.t} delay={i * 80}>
                 <h3 className="step__t">{s.t}</h3>
                 <p className="step__d">{s.d}</p>
@@ -32,7 +27,7 @@ export default function Method() {
           </div>
 
           <Reveal className="sources">
-            <span className="sources__lbl">Fontes</span>
+            <span className="sources__lbl">{t.method.sourcesLabel}</span>
             <ul>{SOURCES.map((s) => <li key={s}>{s}</li>)}</ul>
           </Reveal>
         </div>

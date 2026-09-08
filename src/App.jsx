@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLang } from './i18n.jsx';
 import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
 import Approach from './components/Approach.jsx';
@@ -13,10 +14,11 @@ export default function App() {
   // partilhado entre os CTAs e o formulário: um clique em "Quero investir"
   // deixa o formulário já no perfil certo.
   const [perfil, setPerfil] = useState('proprietario');
+  const { t } = useLang();
 
   return (
     <>
-      <a className="skip" href="#main">Saltar para o conteúdo</a>
+      <a className="skip" href="#main">{t.skip}</a>
       <Nav />
       <main id="main">
         {/* ritmo: escuro → claro → claro → vídeo → claro → petróleo → escuro */}

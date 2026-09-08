@@ -1,21 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import Logo, { Wordmark } from './Logo.jsx';
+import Logo from './Logo.jsx';
 import { useRafScroll } from '../hooks/useMotion.js';
-
-const LINKS = [
-  { href: '#fazemos', label: 'O que fazemos' },
-  { href: '#metodo', label: 'O método' },
-  { href: '#onde', label: 'Onde trabalhamos' },
-  { href: '#contacto', label: 'Contacto' },
-];
-
-const META = [
-  { k: 'Directo', v: '+351 935 904 830', href: 'https://wa.me/351935904830' },
-  { k: 'Social', v: 'Instagram', href: 'https://www.instagram.com/themagnaproperties' },
-  { k: 'Licença', v: 'AMI 27435' },
-];
+import { useLang } from '../i18n.jsx';
 
 export default function Nav() {
+  const { t, lang, toggle } = useLang();
   const [stuck, setStuck] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
@@ -56,7 +45,7 @@ export default function Nav() {
         <button
           ref={burgerRef}
           className={['burger', open && 'on'].filter(Boolean).join(' ')}
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
           aria-expanded={open}
           aria-controls="menu-lateral"
           onClick={() => setOpen((v) => !v)}
@@ -64,12 +53,23 @@ export default function Nav() {
           <i /><i />
         </button>
 
-        <a className="brand" href="#topo" aria-label="Magna Properties — início">
-          <Logo size={24} />
-          <Wordmark />
+        <a className="brand" href="#topo" aria-label={t.nav.brand}>
+          <Logo />
         </a>
 
-        <a className="nav__aside" href="#contacto">Contacto</a>
+        <button
+          className="lang"
+          type="button"
+          onClick={toggle}
+          data-lang={lang}
+          role="switch"
+          aria-checked={lang === 'en'}
+          aria-label={t.nav.langAria}
+        >
+          <span className="lang__o">PT</span>
+          <span className="lang__o">EN</span>
+          <span className="lang__pill" aria-hidden="true" />
+        </button>
       </header>
 
       <div
@@ -84,8 +84,8 @@ export default function Nav() {
         className={['drawer', open && 'open'].filter(Boolean).join(' ')}
         inert={!open}
       >
-        <nav className="drawer__nav" aria-label="Menu">
-          {LINKS.map((l, i) => (
+        <nav className="drawer__nav" aria-label={t.nav.menu}>
+          {t.nav.links.map((l, i) => (
             <a key={l.href} href={l.href} style={{ '--d': `${140 + i * 70}ms` }} onClick={() => setOpen(false)}>
               <span>{l.label}</span>
               <span className="drawer__n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
@@ -95,7 +95,7 @@ export default function Nav() {
 
         <div className="drawer__foot">
           <ul className="drawer__meta">
-            {META.map((m) => (
+            {t.nav.meta.map((m) => (
               <li key={m.k}>
                 <span>{m.k}</span>
                 {m.href
@@ -106,7 +106,7 @@ export default function Nav() {
           </ul>
 
           <a className="btn btn--solid btn--full" href="#contacto" onClick={() => setOpen(false)}>
-            <span>Falar connosco</span><span className="arw">→</span>
+            <span>{t.nav.drawerCta}</span><span className="arw">→</span>
           </a>
         </div>
       </aside>
