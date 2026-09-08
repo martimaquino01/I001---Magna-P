@@ -62,10 +62,10 @@ export default function Hero({ onPick }) {
 
         <div className="hero__cta">
           <a className="btn btn--solid" href="#contacto" onClick={() => onPick('proprietario')}>
-            <span>Tenho um imóvel</span><span className="arw">→</span>
+            <span>Tenho um imóvel</span><Arrow />
           </a>
           <a className="btn btn--line" href="#contacto" onClick={() => onPick('investidor')}>
-            <span>Quero investir</span><span className="arw">→</span>
+            <span>Quero investir</span><Arrow />
           </a>
         </div>
       </div>
@@ -75,5 +75,14 @@ export default function Hero({ onPick }) {
       </a>
       <div className="hero__line" aria-hidden="true" />
     </section>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg className="arw" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6"
+            strokeLinecap="square" strokeLinejoin="miter" />
+    </svg>
   );
 }
