@@ -331,42 +331,53 @@ a:hover .fig img, .mcard:hover .fig img{ transform:scale(1.045); }
 }
 .ready .hero__cta{ opacity:1; transform:none; }
 
-/* botões do hero: presença maior, sem movimento próprio */
+/* botões do hero: par equilibrado, superfícies mates, sem movimento próprio */
+.hero__cta{ gap:14px; }
 .hero__cta .btn{
-  min-width:228px; min-height:56px; padding:17px 30px;
-  gap:12px; font-size:14px; font-weight:600; letter-spacing:.015em;
+  min-width:238px; min-height:58px; padding:18px 32px;
+  gap:13px; font-size:13.5px; font-weight:600; letter-spacing:.03em;
 }
-.hero__cta .btn .arw{ width:17px; height:17px; flex:none; }
+.hero__cta .btn .arw{ width:15px; height:15px; flex:none; opacity:.9; }
 
+/* âmbar mate: gradiente curto, brilho difuso em vez de verniz */
 .hero__cta .btn--solid{
-  background:linear-gradient(180deg, #EFB864 0%, var(--amber) 52%, #D08F30 100%);
-  border-color:#EFB864;
+  background:linear-gradient(178deg, #E8AC4E 0%, var(--amber) 58%, #D5943A 100%);
+  border-color:rgba(255,243,176,.5);
   box-shadow:
-    0 1px 0 rgba(255,243,176,.55) inset,
-    0 14px 34px -16px rgba(224,159,62,.9),
-    0 2px 10px -4px rgba(20,7,8,.5);
-  transition:color .4s var(--e), border-color .4s var(--e), box-shadow .4s var(--e);
+    0 1px 0 rgba(255,247,214,.45) inset,
+    0 20px 44px -22px rgba(224,159,62,.95),
+    0 3px 12px -6px rgba(20,7,8,.55);
+  transition:color .4s var(--e), border-color .4s var(--e), box-shadow .45s var(--e);
 }
 .hero__cta .btn--solid::before{
-  background:linear-gradient(180deg, var(--butter) 0%, #FFE98A 100%);
+  background:linear-gradient(178deg, var(--butter) 0%, #FFEA92 100%);
 }
 .hero__cta .btn--solid:hover, .hero__cta .btn--solid:focus-visible{
   border-color:var(--butter);
   box-shadow:
-    0 1px 0 rgba(255,255,255,.6) inset,
-    0 18px 42px -16px rgba(255,243,176,.6),
-    0 2px 10px -4px rgba(20,7,8,.5);
+    0 1px 0 rgba(255,255,255,.55) inset,
+    0 24px 52px -22px rgba(255,243,176,.7),
+    0 3px 12px -6px rgba(20,7,8,.55);
 }
 
+/* vidro tingido de tinta: ganha corpo sobre qualquer fotograma do vídeo */
 .hero__cta .btn--line{
-  background:rgba(242,236,222,.07);
-  -webkit-backdrop-filter:blur(14px) saturate(1.25);
-  backdrop-filter:blur(14px) saturate(1.25);
-  border-color:rgba(242,236,222,.34);
-  box-shadow:0 1px 0 rgba(242,236,222,.16) inset, 0 12px 30px -20px rgba(20,7,8,.9);
+  background:rgba(20,7,8,.42);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);
+  backdrop-filter:blur(16px) saturate(1.3);
+  border-color:rgba(255,243,176,.26);
+  box-shadow:
+    0 1px 0 rgba(255,243,176,.14) inset,
+    0 20px 44px -26px rgba(20,7,8,1);
+  transition:border-color .4s var(--e);
+}
+/* o secundário nunca acende a âmbar: só o principal o faz, senão os dois
+   ficam iguais no hover e perde-se a hierarquia */
+.hero__cta .btn--line::before{
+  background:linear-gradient(180deg, rgba(242,236,222,.17) 0%, rgba(242,236,222,.09) 100%);
 }
 .hero__cta .btn--line:hover, .hero__cta .btn--line:focus-visible{
-  border-color:var(--butter);
+  color:var(--on-dark); border-color:rgba(255,243,176,.62);
 }
 
 /* fio a descer, a indicar que há mais página */

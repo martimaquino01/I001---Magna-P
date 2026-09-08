@@ -81,7 +81,7 @@ export default function Hero({ onPick }) {
 function Arrow() {
   return (
     <svg className="arw" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6"
+      <path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5"
             strokeLinecap="square" strokeLinejoin="miter" />
     </svg>
   );
